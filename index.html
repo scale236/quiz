@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Custom Smoothie Plan for Rapid Weight Loss</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #22c55e, #15803d, #14532d);
+            overflow-x: hidden;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #ffffff, #dcfce7, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            animation: shine 4s infinite linear;
+        }
+        @keyframes shine {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+        .orb-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.07);
+            filter: blur(140px);
+            will-change: transform;
+        }
+        @keyframes float1 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(30vw, -40vh) scale(1.3); }
+        }
+        @keyframes float2 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-40vw, 30vh) scale(1.2); }
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border-radius: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        .quiz-option {
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            transition: all 0.2s ease-in-out;
+            color: #1f2937;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        .quiz-option .check-icon {
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+        }
+        .quiz-option:hover {
+            transform: translateY(-5px) scale(1.02);
+            background: rgba(255, 255, 255, 1);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        .selected {
+            background-color: #ec4899; /* pink-500 */
+            color: white;
+            border-color: #f472b6; /* pink-400 */
+            font-weight: 700;
+            box-shadow: 0 4px 14px 0 rgba(236, 72, 153, 0.39);
+        }
+        .selected .check-icon {
+            opacity: 1;
+        }
+        .selected:hover {
+             background-color: #ec4899;
+             transform: translateY(0) scale(1);
+        }
+        .loader {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: inline-block;
+            position: relative;
+            border: 4px solid #e5e7eb;
+            animation: rotation 1s linear infinite;
+        }
+        .loader:after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            border: 4px solid;
+            border-color: #ec4899 transparent;
+        }
+        @keyframes rotation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .cta-button {
+             animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(236, 72, 153, 0.7);
+            }
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 15px rgba(236, 72, 153, 0);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(236, 72, 153, 0);
+            }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="text-white">
+
+    <!-- Floating Orbs Background -->
+    <div class="orb-container">
+        <div class="orb" style="width: 500px; height: 500px; top: -10vh; left: -20vw; animation: float1 25s infinite alternate ease-in-out;"></div>
+        <div class="orb" style="width: 400px; height: 400px; top: 40vh; left: 60vw; animation: float2 30s infinite alternate ease-in-out;"></div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container mx-auto max-w-2xl p-4 md:p-8 relative z-10 min-h-screen flex flex-col justify-center">
+        
+        <div id="content-wrapper">
+            <!-- Header -->
+            <header class="text-center mb-8">
+                <h1 class="text-4xl md:text-6xl font-extrabold gradient-text leading-tight tracking-tighter">Unlock Your Dream Body</h1>
+                <p class="text-lg md:text-xl text-green-100 mt-4 max-w-xl mx-auto">Take this 30-second quiz to discover the smoothie secret for rapid, delicious weight loss.</p>
+            </header>
+    
+            <!-- Quiz Section -->
+            <div id="quiz" class="glass-card p-6 md:p-10 text-gray-800">
+                <!-- Dynamic Quiz Content Goes Here -->
+            </div>
+    
+            <!-- Analyzing Results Section -->
+            <div id="analyzing" class="hidden text-center p-10 glass-card">
+                <h2 class="text-2xl font-bold text-white mb-4">Crafting Your Custom Plan...</h2>
+                <p class="text-green-100 mb-6">Analyzing your answers to find the perfect fit!</p>
+                <div class="loader mx-auto"></div>
+            </div>
+    
+            <!-- Results Section -->
+            <div id="results" class="hidden text-center glass-card p-6 md:p-10">
+                <h2 class="text-2xl md-text-3xl font-bold text-white">Amazing News!</h2>
+                <p class="mt-4 text-lg text-green-100">Your results are in! The <strong>21-Day Smoothie Diet</strong> is the perfect way for you to achieve stunning results, fast.</p>
+                
+                <div class="my-8">
+                    <img src="https://i.postimg.cc/yYDtLw9X/image-1.png" alt="Three delicious and healthy smoothies in mason jars" class="rounded-2xl mx-auto shadow-2xl border-2 border-white/50">
+                </div>
+    
+                <div class="text-left max-w-md mx-auto space-y-2 mb-8">
+                    <p class="flex items-center text-green-100"><span class="text-xl mr-3">✅</span> Rapid weight loss and increased energy.</p>
+                    <p class="flex items-center text-green-100"><span class="text-xl mr-3">✅</span> Simple, delicious recipes that are easy to make.</p>
+                    <p class="flex items-center text-green-100"><span class="text-xl mr-3">✅</span> Join thousands of successful transformations.</p>
+                </div>
+                
+                <a id="affiliate-link" href="https://hop.clickbank.net/?affiliate=scale236&vendor=smoothdiet" class="mt-8 cta-button inline-block bg-pink-500 hover:bg-pink-600 text-white font-bold text-xl py-4 px-10 rounded-full shadow-lg transition-transform transform hover:scale-105">
+                    Watch The Secret Video 🎬
+                </a>
+                <p class="text-sm text-green-200 mt-3">Limited spots available. See the presentation now!</p>
+            </div>
+    
+            <!-- Footer -->
+            <footer class="text-center mt-12 text-green-200 text-xs">
+                <p>&copy; 2025 Health & Wellness Discoveries. All rights reserved.</p>
+                <p class="mt-1 opacity-70">Results may vary person to person.</p>
+            </footer>
+        </div>
+
+    </div>
+
+    <script>
+        const quizContainer = document.getElementById('quiz');
+        const analyzingContainer = document.getElementById('analyzing');
+        const resultsContainer = document.getElementById('results');
+        const header = document.querySelector('header');
+        const footer = document.querySelector('footer');
+
+        let currentQuestionIndex = 0;
+        let userAnswers = {};
+
+        // Quiz Questions
+        const questions = [
+            {
+                question: "What is your main health goal right now?",
+                options: ["⚖️ Lose weight", "⚡️ Increase energy", "🥗 Feel healthier overall", "🎯 All of the above"],
+                key: 'goal'
+            },
+            {
+                question: "What is the biggest thing holding you back?",
+                options: ["⏳ Lack of time", "🤯 Confusing diets", "🍩 Unhealthy cravings", "📉 Low motivation"],
+                key: 'obstacle'
+            },
+            {
+                question: "Imagine your ideal body. How quickly do you want to see a real, noticeable change?",
+                options: ["🗓️ In the next 3 weeks", "📅 Within a month or two", "😌 I'm not in a rush"],
+                key: 'timeline'
+            }
+        ];
+
+        // Function to display the current question
+        function displayQuestion() {
+            const questionData = questions[currentQuestionIndex];
+            if (!questionData) {
+                showResults();
+                return;
+            }
+
+            const progress = ((currentQuestionIndex) / questions.length) * 100;
+
+            let optionsHtml = '';
+            questionData.options.forEach(option => {
+                // Escape single quotes in the option to prevent JS syntax errors
+                const escapedOption = option.replace(/'/g, "\\'");
+                optionsHtml += `<div onclick="selectOption('${questionData.key}', '${escapedOption}', this)" class="quiz-option cursor-pointer rounded-xl p-4 my-3 text-lg text-center font-semibold">
+                    <span class="check-icon">✓</span>
+                    <span>${option}</span>
+                </div>`;
+            });
+
+            quizContainer.innerHTML = `
+                <div class="w-full bg-white/30 rounded-full h-2.5 mb-6 overflow-hidden">
+                    <div class="bg-pink-500 h-2.5 rounded-full transition-all duration-500" style="width: ${progress}%"></div>
+                </div>
+                <h2 class="text-2xl font-bold text-center mb-5 text-gray-800">${questionData.question}</h2>
+                <div class="options-container">${optionsHtml}</div>
+            `;
+        }
+        
+        // Function to handle option selection
+        function selectOption(key, value, element) {
+            userAnswers[key] = value;
+            
+            const options = element.parentNode.children;
+            // Prevent re-clicking while transitioning
+            for (let i = 0; i < options.length; i++) {
+                 options[i].style.pointerEvents = 'none';
+            }
+            
+            element.classList.add('selected');
+
+            setTimeout(() => {
+                currentQuestionIndex++;
+                displayQuestion();
+            }, 500);
+        }
+
+        // Function to show the results
+        function showResults() {
+            quizContainer.style.display = 'none';
+            header.style.display = 'none';
+            analyzingContainer.classList.remove('hidden');
+
+            setTimeout(() => {
+                analyzingContainer.style.display = 'none';
+                resultsContainer.classList.remove('hidden');
+                footer.style.marginTop = '3rem'; // Adjust footer margin for the new layout
+            }, 2500);
+        }
+
+        window.onload = displayQuestion;
+
+    </script>
+</body>
+</html>
+
